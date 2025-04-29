@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Servicios Publicitarios Barbari</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="overlay"></div>
+
+      <!-- Logo dentro del header para que el fondo lo abarque -->
+      <div class="logo-fix">
+        <img src="./img/barbarie-logo.png" alt="Logo Barbari" />
+      </div>
+
+      <div class="hero-content">
+        <h1>BARBARI SERVICIOS PUBLICITARIOS</h1>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>¿Quiénes somos?</h2>
+        <p>
+          Somos una empresa dedicada a brindar soluciones integrales de
+          publicidad, comunicación y mercadotecnia. Nuestro objetivo es
+          potenciar la presencia de marcas y negocios mediante estrategias
+          creativas, diseño profesional y medios eficientes.
+        </p>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>Misión</summary>
+          <p>
+            Proveer soluciones publicitarias de alta calidad que generen impacto
+            y valor para nuestros clientes.
+          </p>
+        </details>
+        <details>
+          <summary>Visión</summary>
+          <p>
+            Ser reconocidos como una empresa líder en creatividad e innovación
+            en servicios publicitarios.
+          </p>
+        </details>
+        <details>
+          <summary>Valores</summary>
+          <p>
+            Compromiso, responsabilidad, creatividad, puntualidad y respeto.
+          </p>
+        </details>
+      </section>
+
+      <section class="card">
+        <h2>Servicios</h2>
+        <div class="grid">
+          <div class="service-box">
+            Diseño y producción de publicidad impresa y digital
+          </div>
+          <div class="service-box">
+            Desarrollo de imagen corporativa e identidad gráfica
+          </div>
+          <div class="service-box">Diseño y creación de sitios web</div>
+          <div class="service-box">
+            Campañas publicitarias, audiovisuales y multimedia
+          </div>
+          <div class="service-box">
+            Servicios de mercadotecnia y consultoría creativa
+          </div>
+        </div>
+      </section>
+
+      <!-- Formulario de contacto -->
+      <section class="card">
+        <h2>¡Déjanos tus datos!</h2>
+        <form class="contact-form">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" required />
+
+          <label for="correo">Correo:</label>
+          <input type="email" id="correo" name="correo" required />
+
+          <label for="asunto">Asunto:</label>
+          <input type="text" id="asunto" name="asunto" required />
+
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+
+      <section class="card direccion">
+        <h2>Dirección</h2>
+        <div class="direccion-map-container">
+          <!-- Texto con la dirección -->
+          <div class="direccion-text">
+            <p>
+              Periférico Blvrd Manuel Ávila Camacho 138,<br/>
+              Lomas de Chapultepec III Secc,<br/>
+              Miguel Hidalgo, 11000 Ciudad de México, CDMX
+            </p>
+          </div>
+          <!-- Mapa embebido de Google Maps -->
+          <div class="direccion-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.1234567890123!2d-99.1234567!3d19.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f1234567890%3A0xabcdef1234567890!2sPerif%C3%A9rico%20Blvrd%20Manuel%20%C3%81vila%20Camacho%20138!5e0!3m2!1ses!2smx!4v1234567890123"
+              width="100%"
+              height="250"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Servicios Publicitarios Barbari. Todos los derechos reservados.</p>
+    </footer>
+  </body>
+</html>
