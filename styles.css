@@ -1,328 +1,576 @@
-/* styles_cleaned.css */
+/* ===== Reset & Variables ===== */
+:root {
+  --clr-primary: #F7931E;
+  --clr-secondary: #0E5E6F;
+  --clr-bg: #F5F5F5;
+  --clr-text: #333;
+  --radius: 0.5rem;
+  --spacing: 1rem;
+}
 
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===== Body ===== */
 body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
-  color: #333;
-  background: linear-gradient(
-    135deg,
-    #fdfdfd 0%,
-    #f5f5f5 40%,
-    #ffffff 100%
-  );
+  color: var(--clr-text);
+  background: var(--clr-bg);
 }
 
-/* ===== Hero & Overlay ===== */
-header.hero {
-  position: relative;
-  display: grid;
-  grid-template-columns: 360px 1fr 360px; /* 360px = el ancho de tu logo */
-  align-items: center;
-  justify-items: center;
-  height: 260px;
-  background: url('./img/fondo-publicidad.png') top left no-repeat;
-  background-size: cover;
-}
-
-header.hero .overlay {
-  grid-column: 1 / -1;
-  grid-row: 1;
-  inset: 0;
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.2)
-  );
-  z-index: 0;
-  border-radius: 0.5rem;
-}
-
-/* ===== Logo ===== */
-.logo-fix {
-  grid-column: 1;
-  grid-row: 1;
-  position: absolute;
-  top: -50px;
-  left: 20px;
-  width: 360px;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateX(-30px);
-  animation: logoFadeIn 1s ease-out forwards;
-  animation-delay: 0.3s;
-}
-
-.logo-fix img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ===== Título centrado absoluto ===== */
-.hero-content {
-  grid-column: 2;
-  grid-row: 1;
-  z-index: 2;
-}
-
-.hero-content h1 {
-  white-space: nowrap;   /* evita quiebres */
-  font-size: 3rem;
-  background-color: rgba(255,255,255,0.85);
-  padding: 12px 28px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  animation: fadeSlideIn 1s ease forwards;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-/* ===== Contenedor principal ===== */
+/* ===== Container ===== */
 .container {
   max-width: 1000px;
   margin: auto;
-  padding: 20px;
+  padding: var(--spacing);
 }
 
-/* ===== Cards ===== */
-.card {
-  background-color: #e7e5e5;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.card h2 {
-  color: #007BFF;
-  margin-bottom: 10px;
-}
-
-.card p,
-.card summary {
-  color: #333;
-  margin-bottom: 10px;
-}
-
-/* Acordeón */
-.card details {
-  background-color: #f0f8ff;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.card details summary {
-  list-style: none;
-  cursor: pointer;
+/* ===== Navbar ===== */
+.navbar {
   position: relative;
-  padding-left: 1.5rem;
-  color: #007BFF;
-  font-size: 1rem;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 1rem 1rem;
+}
+
+.navbar .nav-container {
+  position: relative;
+  height: 90px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo a la izquierda */
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+}
+.logo img {
+  height: 360px;
+}
+
+/* Enlaces centrados */
+.nav-links {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  position: relative;
+  font-size: 2rem;
+  color: var(--clr-text);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.2rem 0;
   transition: color 0.3s ease;
 }
-
-.card details summary:hover {
-  color: #005bb5;
-}
-
-.card details summary::before {
-  content: '▶';
+.nav-links a::after {
+  content: "";
   position: absolute;
+  bottom: -3px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--clr-primary);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+.nav-links a:hover {
+  color: var(--clr-primary);
+}
+.nav-links a:hover::after {
   left: 0;
-  top: 0.15em;
-  transition: transform 0.3s ease;
+  width: 100%;
 }
 
-.card details[open] summary::before {
-  transform: rotate(90deg);
+/* Botón a la derecha */
+.btn-primary {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
 }
 
-.card details p {
-  opacity: 0;
-  transform: translateY(-5px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+/* ===== Botones ===== */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: filter 0.2s ease;
 }
-
-.card details[open] p {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===== Grid de servicios ===== */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-  margin-top: 10px;
-}
-
-.service-box {
-  background-color: #e6f0ff;
-  padding: 15px;
-  border-radius: 8px;
-  color: #004080;
-  font-weight: 500;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.service-box:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* ===== Formulario de contacto ===== */
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.contact-form label {
-  font-weight: 500;
-  color: #007BFF;
-}
-
-.contact-form input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-.contact-form button {
-  background-color: #007BFF;
+.btn-primary {
+  background: var(--clr-primary);
   color: #fff;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+}
+.btn-primary:hover {
+  filter: brightness(0.9);
+}
+.btn-secondary {
+  background: var(--clr-secondary);
+  color: #fff;
+}
+.btn-secondary:hover {
+  filter: brightness(0.9);
 }
 
-.contact-form button:hover {
-  background-color: #005bb5;
-}
-
-/* ===== Sección Dirección ===== */
-.direccion-map-container {
+/* ===== Hero + Animaciones ===== */
+.hero {
+  color: #e6f0ff;
+  position: relative;
+  height: 30vh; /* ajustable */
+  background: url('./img/fondo-publicidad1.jpg') center/cover no-repeat;
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  margin-top: 12px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  animation:
+    fadeIn 2s ease-out forwards,
+    kenburns 30s ease-in-out infinite;
+}
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+.hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow:
+    1px 1px 2px rgba(0,0,0,0.6),
+    2px 2px 6px rgba(0,0,0,0.4);
+  margin: 0;
+  transition: letter-spacing .3s;
+}
+.hero-content h1:hover {
+  letter-spacing: 4px;
 }
 
-.direccion-text {
-  flex: 1;
-  min-width: 200px;
-  font-size: 1rem;
-  line-height: 1.4;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes kenburns {
+  0% {
+    background-size: 110%;
+    background-position: center 20%;
+  }
+  50% {
+    background-size: 120%;
+    background-position: center 80%;
+  }
+  100% {
+    background-size: 110%;
+    background-position: center 20%;
+  }
 }
 
-.direccion-map {
-  flex: 1;
-  min-width: 250px;
-  height: 250px;
-  border-radius: 8px;
+/* ===== Sección Quiénes somos (nuevo layout) ===== */
+.section-nosotros {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* izquierda imagen, derecha contenido */
+  align-items: center;
+  margin-top: 1.2rem;
+  padding: 8rem 1rem;
+  background: url('./img/fondo-nosotros.jpg') center/cover no-repeat;
+  overflow: hidden;
+  animation:
+    fadeIn 2s ease-out forwards,
+    kenburns 30s ease-in-out infinite;
+}
+.section-nosotros::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+}
+
+.section-nosotros .section-header {
+  grid-column: 2;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
+.section-nosotros .section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: var(--clr-primary);
+  margin: 0;
+}
+.section-nosotros .section-content {
+  grid-column: 2;
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;      /* centra horizontalmente dentro de la columna */
+  font-family: 'Lora', serif;
+  font-size: clamp(2rem, 2.5vw, 1.5rem);
+  line-height: 1.8;
+  color: #fff;
+  text-align: center;
+}
+
+/* ===== Actualiza “Nuestros servicios” con fondo y hover naranja ===== */
+.section-servicios {
+  position: relative;
+  padding: 4rem 1rem;
+  background: url('./img/fondo-servicios.jpg') center/cover no-repeat;
   overflow: hidden;
 }
-
-.direccion-map iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-  border-radius: 8px;
+.section-servicios::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.85); /* capa para contraste */
 }
+.section-servicios .section-header {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.section-servicios .section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  color: var(--clr-primary);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0;
+}
+.section-servicios .section-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+  justify-content: center;
+}
+
+/* Tarjetas con hover naranja */
+.service-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+  background: var(--clr-primary);
+  color: #fff;
+}
+.service-card:hover .card-icon,
+.service-card:hover h3 {
+  color: #fff;
+}
+.service-card:hover p {
+  color: rgba(255,255,255,0.9);
+}
+
+/* ===== Contacto y Dirección ===== */
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: var(--spacing);
+  margin-bottom: var(--spacing);
+}
+.card h2 {
+  color: var(--clr-primary);
+  margin-bottom: 0.75rem;
+}
+
+/* ===== Sección CONTACTO full-width con fondo ===== */
+.section-contacto {
+  position: relative;
+  padding: 6rem 1rem; 
+  background: url('./img/fondo-contacto.jpg') center/cover no-repeat;
+  overflow: hidden;
+}
+.section-contacto .overlay {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4); /* oscurece el fondo para que el formulario resalte */
+}
+.section-contacto .contact-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.9);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: left;
+}
+
+/* Ajustes tipográficos */
+.section-contacto .contact-wrapper h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--clr-primary);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.section-contacto .contact-form label {
+  font-weight: 500;
+}
+.section-contacto .contact-form input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  
+}
+.section-contacto .contact-form button {
+  margin-top: var(--spacing);
+  width: 100%;
+  
+}
+
+.section-contacto .contact-form button.btn-secondary {
+  background: var(--clr-primary);    /* naranja */
+  border-color: var(--clr-primary);
+  color: #fff;
+}
+.section-contacto .contact-form button.btn-secondary:hover {
+  filter: brightness(0.9);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-contacto {
+    padding: 4rem 1rem;
+  }
+  .section-contacto .contact-wrapper {
+    padding: 1.5rem;
+  }
+}
+
+/* ===== Sección MAPA full-width con título y grid ===== */
+.section-mapa {
+  position: relative;
+  padding: 2rem 1rem;
+  background: url('./img/fondo-mapa.png') center/cover no-repeat;
+  overflow: hidden;
+  margin-top: 1.2rem;
+}
+.section-mapa .overlay {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+}
+
+/* Encabezado al centro encima de todo */
+.section-mapa .mapa-grid > h2 {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / -1;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--clr-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* ——— Ajustes de la sección MAPA ——— */
+.section-mapa .mapa-grid {
+  /* Mantén el layout de dos columnas */
+  display: grid;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing);
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Título más grande y centrado sobre ambas columnas */
+.section-mapa .mapa-grid > h2 {
+  grid-column: 1 / -1;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: var(--clr-primary);
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Texto de dirección amplio en la columna izquierda */
+.section-mapa .direccion-text {
+  grid-column: 1 / 2;      /* fuerza la primera columna */
+  
+  /* Tipografía más grande y fluida */
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  line-height: 1.6;
+  color: #fff;              /* o var(--clr-secondary) si prefieres azul */
+
+  /* Asegura que se muestre completo */
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+
+  /* Y un poco de espacio interno si lo quieres */
+  /* padding-right: var(--spacing); */
+  text-align: left;
+}
+
+
+/* Responsive: pasa a una columna en móvil */
+@media (max-width: 768px) {
+  .section-mapa .mapa-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* ===== Footer ===== */
 footer {
   text-align: center;
-  padding: 20px;
-  background-color: #222;
+  padding: var(--spacing);
+  background: #222;
   color: #eee;
-  margin-top: 40px;
+  font-size: 0.9rem;
 }
 
-/* ===== Animaciones ===== */
-@keyframes logoFadeIn {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeSlideIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes backgroundZoom {
-  0% { background-size: 100%; }
-  100% { background-size: 105%; }
-}
-
-/* ===== Media Queries ===== */
+/* ===== Responsive para móviles (≤768px) ===== */
 @media (max-width: 768px) {
-  header.hero {
+  /* Navbar: stack y centrar */
+
+  .nav-links,
+  .btn-primary {
+    display: none !important;
+  }
+
+  .navbar .nav-container {
+  /* Eleva el logo alejándolo del hero */
+  padding-bottom: 2rem;  /* antes era ~1rem, ajústalo a tu gusto */
+}
+
+  /* Centramos el logo horizontalmente */
+  .logo {
+    margin: 1rem auto !important;
+    position: relative !important;
+    transform: none !important;
+  }
+  
+  /* Hero: menos alto y texto más pequeño */
+  .hero {
+    height: 30vh;
+  }
+  .hero-content h1 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+
+  /* “Quiénes somos”: menos padding y texto ajustado */
+  .section-nosotros {
+    padding: 4rem 1rem;
+  }
+  .section-nosotros .section-header h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  .section-nosotros .section-content {
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
+    padding: 0 1rem;
+  }
+
+  /* Servicios: columna única y tarjetas expandidas */
+  .section-servicios .section-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .service-card {
+    max-width: 100%;
+    justify-self: auto;
+  }
+
+  /* Contacto: contenedor más estrecho */
+  .section-contacto {
+    padding: 4rem 1rem;
+  }
+  .section-contacto .contact-wrapper {
+    max-width: 800px;
+    width: 80%;
+    padding: 1rem;
+  }
+  .section-contacto .contact-wrapper h2 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+
+ /* Contenedor único en columna y centrado */
+  .section-mapa .mapa-grid {
     display: flex;
     flex-direction: column;
-    padding: 20px 0 40px;
-    height: auto;
+    align-items: center;
+    gap: var(--spacing);
+    padding: 1rem 0;
   }
 
-  .logo-fix {
-    position: static;
-    width: 200px;
-    margin: 0 auto 12px;
-    transform: none;
-    animation: none;
-    opacity: 1;
-    pointer-events: auto;
+  /* Título centrado */
+  .section-mapa .mapa-grid > h2 {
+    text-align: center;
+    margin-bottom: var(--spacing);
   }
 
-  .hero-content {
-    position: static;
-    transform: none;
-    top: auto;
-    left: auto;
-    margin: 0;
-    padding: 0 16px;
-    width: 100%;
-  }
-
-  .hero-content h1 {
-    font-size: 1.8rem;
-    line-height: 1.2;
-    white-space: normal;
+  /* Texto centrado y con ancho cómodo */
+  .section-mapa .direccion-text {
+    width: 90%;
+    max-width: none;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
   }
 
-  .direccion-map-container {
-    flex-direction: column;
+  /* Mapa debajo, centrado y con altura reducida */
+  .section-mapa .direccion-map {
+    width: 90%;
+    max-width: none;
+    margin: 0 auto;
+  }
+  .section-mapa .direccion-map iframe {
+    width: 100%;
+    height: 250px;  /* ajusta según te convenga */
   }
 
-  .direccion-map {
-    height: 200px;
-  }
 }
