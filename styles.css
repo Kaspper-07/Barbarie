@@ -46,7 +46,7 @@ body {
   z-index: 1000;
   background: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 3rem;
+  padding: 2rem;
 }
 .logo {
   position: absolute;
@@ -54,15 +54,15 @@ body {
   left: 1rem;
   transform: translateY(-50%);
 }
+
 .logo img {
-  height: 360px;
+  width: 400px;
 }
 .nav-links {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  gap: 2rem;
+  display: flex; gap: 2rem;
   list-style: none;
 }
 .nav-links a {
@@ -85,8 +85,7 @@ body {
   color: var(--clr-primary);
 }
 .nav-links a:hover::after {
-  left: 0;
-  width: 100%;
+  left: 0; width: 100%;
 }
 
 /* ===========================
@@ -96,39 +95,30 @@ body {
   position: relative;
   height: 30vh;
   background: url('./img/fondo-publicidad1.jpg') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-  animation: fadeIn 2s ease-out forwards,
-             kenburns 30s ease-in-out infinite;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
+  animation: fadeIn 2s ease-out forwards, kenburns 30s ease-in-out infinite;
 }
 .hero .overlay {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: rgba(0,0,0,0.4);
 }
 .hero-content h1 {
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.5rem, 6vw, 4rem);
   color: #e6f0ff;
   text-transform: uppercase;
   letter-spacing: 2px;
-  text-shadow:
-    1px 1px 2px rgba(0,0,0,0.6),
-    2px 2px 6px rgba(0,0,0,0.4);
-  transition: letter-spacing 0.3s;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6),2px 2px 6px rgba(0,0,0,0.4);
+  transition: letter-spacing .3s;
 }
 .hero-content h1:hover {
   letter-spacing: 4px;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from { opacity: 0; } to { opacity: 1; }
 }
 @keyframes kenburns {
   0%   { background-size: 110%; background-position: center 20%; }
@@ -145,42 +135,35 @@ body {
   grid-template-columns: 1fr 1fr;
   align-items: center;
   padding: 8rem 1rem;
-  margin-top: 1.2rem;
   background: url('./img/fondo-nosotros.jpg') center/cover no-repeat;
   overflow: hidden;
-  animation: fadeIn 2s ease-out forwards,
-             kenburns 30s ease-in-out infinite;
+  animation: fadeIn 2s ease-out forwards, kenburns 30s ease-in-out infinite;
+  margin-top: 1.2rem;
 }
 .section-nosotros::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+  content: ""; position: absolute; inset: 0;
   background: rgba(0,0,0,0.3);
 }
 .section-nosotros .section-header,
 .section-nosotros .section-content {
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
 }
 .section-nosotros .section-header {
-  grid-column: 2;
-  text-align: center;
-  margin-bottom: 2rem;
+  grid-column: 2; text-align: center; margin-bottom: 2rem;
 }
 .section-nosotros .section-header h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 5rem;
+  font-size: var(--fs-section-title);
   color: var(--clr-primary);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  opacity: 1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 .section-nosotros .section-content {
-  grid-column: 2;
-  max-width: 600px;
-  margin: 0 auto;
-  font-family: 'Lora', serif;
-  font-size: 2rem;
-  line-height: 1.8;
-  color: #fff;
-  text-align: center;
+  grid-column: 2; max-width: 600px; margin: 0 auto;
+  font-family: 'Lora', serif; font-size: var(--fs-section-text);
+  line-height: 1.8; color: #fff; text-align: center;
 }
 
 /* ===================================
@@ -189,14 +172,10 @@ body {
 section[id="mision"],
 section[id="vision"],
 section[id="valores"] {
-  position: relative;
-  padding: 6rem 1rem;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  margin-top: 1.2rem;
-  animation: fadeIn 2s ease-out forwards,
-             kenburns 30s ease-in-out infinite;
+  position: relative; padding: 6rem 1rem;
+  background-size: cover; background-position: center;
+  overflow: hidden; margin-top: 1.2rem;
+  animation: fadeIn 2s ease-out forwards, kenburns 30s ease-in-out infinite;
 }
 .section-mision { background-image: url('./img/fondo-mision.jpg'); }
 .section-vision { background-image: url('./img/fondo-vision.jpg'); }
@@ -205,20 +184,16 @@ section[id="valores"] {
 section[id="mision"]::before,
 section[id="vision"]::before,
 section[id="valores"]::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+  content: ""; position: absolute; inset: 0;
   background: rgba(0,0,0,0.3);
 }
 
-/* Encabezados sobre overlay */
+/* Encabezados */
 .section-mision .section-header,
 .section-vision .section-header,
 .section-valores .section-header {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  margin-bottom: 2rem;
+  position: relative; z-index: 2;
+  text-align: center; margin-bottom: 2rem;
 }
 .section-mision .section-header h2,
 .section-vision .section-header h2,
@@ -235,53 +210,39 @@ section[id="valores"]::before {
 /* Contenido Misión/Visión */
 .section-mision .section-content,
 .section-vision .section-content {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
-  margin: 0 auto;
+  position: relative; z-index: 1;
+  max-width: 800px; margin: 0 auto;
   font-family: 'Lora', serif;
   font-size: var(--fs-section-text);
-  line-height: 1.8;
-  color: #fff;
-  text-align: center;
+  line-height: 1.8; color: #fff; text-align: center;
 }
 
 /* Contenido Valores: grid de tarjetas */
 .section-valores .cards-grid {
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  gap: 2rem; max-width: 1200px; margin: 0 auto;
 }
 .section-valores .cards-grid .card {
   background: rgba(255,255,255,0.2);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.3);
-  padding: 1.5rem;
-  border-radius: 1rem;
+  padding: 1.5rem; border-radius: 1rem;
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  color: #fff;
-  text-align: center;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.3s ease,
-    border-color 0.3s ease;
+  color: #fff; text-align: center;
+  transition: transform .3s ease, box-shadow .3s ease,
+              background .3s ease, border-color .3s ease;
 }
 .section-valores .cards-grid .card h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.75rem;
-  color: var(--clr-primary);
-  margin-bottom: 0.75rem;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  color: var(--clr-primary); margin-bottom: .75rem;
 }
 .section-valores .cards-grid .card p {
   font-family: 'Lora', serif;
-  font-size: 1.125rem;
-  line-height: 1.6;
-  margin: 0;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  line-height: 1.6; margin: 0;
 }
 .section-valores .cards-grid .card:hover {
   background: rgba(255,255,255,0.35);
@@ -298,71 +259,57 @@ section[id="valores"]::before {
    SECCIÓN “NUESTROS SERVICIOS”
 =================================== */
 .section-servicios {
-  position: relative;
-  padding: 4rem 1rem;
+  position: relative; padding: 4rem 1rem;
   background: url('./img/fondo-servicios.jpg') center/cover no-repeat;
-  overflow: hidden;
-  margin-top: 1.2rem;
+  overflow: hidden; margin-top: 1.2rem;
   animation: fadeIn 2s ease-out forwards, kenburns 30s ease-in-out infinite;
+
 }
 .section-servicios::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+  content: ""; position: absolute; inset: 0;
   background: rgba(0,0,0,0.3);
 }
 .section-servicios .section-header {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  margin-bottom: 2rem;
+  position: relative; z-index: 1;
+  text-align: center; margin-bottom: 2rem;
 }
 .section-servicios .section-header h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 2rem;
+  font-size: var(--fs-section-title);
   color: var(--clr-primary);
   text-transform: uppercase;
   letter-spacing: 3px;
 }
 .section-servicios .section-content {
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  gap: 1.5rem; max-width: 1200px; margin: 0 auto;
 }
 .service-card {
-  background: #fff;
-  border-radius: var(--radius);
+  background: #fff; border-radius: var(--radius);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 2rem 1.5rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  padding: 2rem 1.5rem; text-align: center;
+  display: flex; flex-direction: column;
+  transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
 }
 .service-card .card-icon {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 1rem;
+  font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem;
 }
 .service-card h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  color: var(--clr-primary);
-  margin-bottom: 0.75rem;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  color: var(--clr-primary); margin-bottom: .75rem;
 }
 .service-card p {
   font-family: 'Lora', serif;
-  font-size: 1.5rem;
+  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
   line-height: 1.6;
 }
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-  background: var(--clr-primary);
-  color: #fff;
+  background: var(--clr-primary); color: #fff;
 }
 .service-card:hover .card-icon {
   font-size: clamp(2.5rem, 6vw, 5rem);
@@ -372,132 +319,52 @@ section[id="valores"]::before {
   color: #fff;
 }
 
-/* ===== Sección Testimonios con fondo ===== */
-.section-testimonios {
-  position: relative;
-  padding: 4rem 1rem;
-  background: url('./img/fondo-testimonios.png') center/cover no-repeat;
-  overflow: hidden;
-  margin-top: 1.2rem;
-  animation: fadeIn 2s ease-out forwards, kenburns 30s ease-in-out infinite;
-}
-.section-testimonios .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.3);
-  z-index: 1;
-}
-
-.section-testimonios .cards-grid {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Tarjetas */
-.testimonial-card {
-  background: rgba(255,255,255,0.85);
-  border-radius: var(--radius);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  padding: 2rem;
-  text-align: center;
-  font-family: 'Lora', serif;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover opcional */
-.testimonial-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-}
-
-/* Estrellas */
-.testimonial-card .stars {
-  color: var(--clr-primary);
-  font-size: 1.5rem;
-  margin-bottom: 0.75rem;
-}
-
-/* Texto y autor */
-.section-testimonios .testimonial-card p {
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-  line-height: 1.8;
-  color: var(--clr-text);
-  margin-bottom: 1rem;
-}
-.section-testimonios .testimonial-card h4 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.25rem;
-  color: var(--clr-primary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
 /* ===================================
    SECCIÓN CONTACTO
 =================================== */
 .section-contacto {
-  position: relative;
-  padding: 6rem 1rem;
+  position: relative; padding: 6rem 1rem;
   background: url('./img/fondo-contacto.jpg') center/cover no-repeat;
-  overflow: hidden;
-  margin-top: 1.2rem;
+  overflow: hidden; margin-top: 1.2rem;
   animation: fadeIn 2s ease-out forwards, kenburns 30s ease-in-out infinite;
+
 }
 .section-contacto .overlay {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: rgba(0,0,0,0.4);
 }
 .section-contacto .contact-wrapper {
-  position: relative;
-  z-index: 1;
-  max-width: 600px;
-  margin: 0 auto;
+  position: relative; z-index: 1;
+  max-width: 600px; margin: 0 auto;
   background: rgba(255,255,255,0.9);
-  border-radius: var(--radius);  
-  padding: 2rem;
+  border-radius: var(--radius); padding: 2rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 .section-contacto .contact-wrapper h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
+  font-size: var(--fs-section-title);
   color: var(--clr-primary);
-  text-align: center;
-  margin-bottom: 1.5rem;
+  text-align: center; margin-bottom: 1.5rem;
 }
 .section-contacto .contact-form {
-  display: grid;
-  gap: 1rem;
+  display: grid; gap: 1rem;
 }
 .section-contacto .contact-form label {
-  font-weight: 500;
-  font-size: 1.75rem;
+  font-weight: 500; font-size: 1.75rem;
 }
 .section-contacto .contact-form input,
 .section-contacto .contact-form textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: var(--radius);
-  resize: vertical;
+  width: 100%; padding: .75rem 1rem;
+  font-size: 0.9rem; border: 1px solid #ccc;
+  border-radius: var(--radius); resize: vertical;
 }
 .section-contacto .contact-form textarea {
-  min-height: 180px;
-  line-height: 1.5;
+  min-height: 180px; line-height: 1.5;
 }
 .section-contacto .contact-form button {
-  width: 100%;
-  padding: 1rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-  border-radius: var(--radius);
-  cursor: pointer;
+  width: 100%; padding: 1rem;
+  font-size: 1.25rem; font-weight: 600;
+  border-radius: var(--radius); cursor: pointer;
 }
 .section-contacto .contact-form button:hover {
   filter: brightness(0.95);
@@ -507,121 +374,115 @@ section[id="valores"]::before {
    SECCIÓN MAPA
 =================================== */
 .section-mapa {
-  position: relative;
-  padding: 2rem 1rem;
+  position: relative; padding: 2rem 1rem;
   background: url('./img/fondo-mapa.png') center/cover no-repeat;
-  overflow: hidden;
-  margin-top: 1.2rem;
+  overflow: hidden; margin-top: 1.2rem;
   animation: fadeIn 2s ease-out forwards, kenburns 30s ease-in-out infinite;
+
 }
 .section-mapa .overlay {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: rgba(0,0,0,0.3);
 }
 .section-mapa .mapa-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing);
-  max-width: 1000px;
-  margin: 0 auto;
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--spacing); max-width: 1000px; margin: 0 auto;
 }
 .section-mapa .mapa-grid > h2 {
   grid-column: 1 / -1;
   font-family: 'Playfair Display', serif;
   font-size: var(--fs-section-title);
   color: var(--clr-primary);
-  text-align: center;
-  margin-bottom: var(--spacing);
+  text-align: center; margin-bottom: var(--spacing);
 }
 .section-mapa .direccion-text {
   font-family: 'Poppins', sans-serif;
   font-size: var(--fs-section-text);
-  color: #fff;
-  text-align: left;
+  color: #fff; text-align: left;
 }
 .section-mapa iframe {
-  width: 100%;
-  height: 300px;
-  border: none;
+  width: 100%; height: 300px; border: none;
 }
 
-/* ========= FOOTER ========= */
+/* ===================================
+   SECCIÓN TESTIMONIOS
+=================================== */
+.section-testimonios {
+  position: relative; padding: 4rem 1rem;
+  background: url('./img/fondo-testimonios.png') center/cover no-repeat;
+  overflow: hidden; margin-top: 1.2rem;
+  animation: fadeIn 2s ease-out forwards, kenburns 30s ease-in-out infinite;
+}
+.section-testimonios .overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.3); z-index: 1;
+}
+.section-testimonios .cards-grid {
+  position: relative; z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem; max-width: 1200px; margin: 0 auto;
+}
+.testimonial-card {
+  background: rgba(255,255,255,0.85);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  padding: 2rem; text-align: center;
+  font-family: 'Lora', serif;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+.testimonial-card .stars {
+  color: var(--clr-primary);
+  font-size: 1.5rem; margin-bottom: .75rem;
+}
+.section-testimonios .testimonial-card p {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  line-height: 1.8; color: var(--clr-text);
+  margin-bottom: 1rem;
+}
+.section-testimonios .testimonial-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  color: var(--clr-primary);
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* ===================================
+   FOOTER – ICONOS SOCIALES
+=================================== */
 footer {
-  text-align: center;
-  padding: var(--spacing);
-  background: #222;
-  color: #eee;
-  font-size: 1rem;
+  text-align: center; padding: var(--spacing);
+  background: #222; color: #eee;
 }
-
-/* ===== Footer – iconos sociales ===== */
-footer {
-  text-align: center;
-  padding: var(--spacing);
-  background: #222;
-  color: #eee;
-}
-
 footer .social-icons {
   margin-top: var(--spacing);
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+  display: flex; justify-content: center; gap: 1rem;
 }
-
 footer .social-icons a {
   display: inline-block;
-  transition: transform 0.2s ease;
+  transition: transform .2s ease, filter .2s ease;
 }
-
 footer .social-icons a:hover {
   transform: translateY(-4px);
 }
-
 footer .social-icons img {
-  width: 32px;
-  height: 32px;
-  /* Si tus SVGs son oscuros y quieres que se vean en blanco: */
+  width: 32px; height: 32px;
   filter: invert(1) brightness(2);
-}
-
-/* ===== Unificar estilo de todos los h2 de sección ===== */
-.section-nosotros .section-header h2,
-.section-mision .section-header h2,
-.section-vision .section-header h2,
-.section-valores .section-header h2,
-.section-contacto .contact-wrapper h2,
-.section-mapa .mapa-grid > h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: var(--fs-section-title);
-  color: var(--clr-primary);
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  opacity: 1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  position: relative;
-  z-index: 2;
-  margin-bottom: 2rem;
-  text-align: center;
 }
 
 /* ===========================
    RESPONSIVE (≤768px)
 =========================== */
 @media (max-width: 768px) {
-  .nav-links,
-  .btn-primary {
-    display: none;
-  }
-  .hero {
-    height: 30vh;
-  }
-  .hero-content h1 {
-    font-size: clamp(1.5rem, 6vw, 2.5rem);
-  }
+  .nav-links { display: none; }
+  .logo img {width: 350px;}
+  .hero { height: 30vh; }
+  .hero-content h1 { font-size: clamp(1.5rem, 6vw, 2.5rem); }
 
   .section-nosotros {
     padding: 4rem 1rem;
@@ -634,43 +495,43 @@ footer .social-icons img {
   }
 
   .section-servicios .section-content {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: 1fr; gap: 1rem;
+  }
+  .service-card h3 {
+    font-size: clamp(1.1rem, 5vw, 1.3rem);
+  }
+  .service-card p {
+    font-size: clamp(0.9rem, 3.5vw, 1.0rem);
   }
 
   .section-contacto {
     padding: 4rem 1rem;
   }
   .section-contacto .contact-wrapper {
-    width: 90%;
-    max-width: 800px;
-    padding: 1rem;
+    width: 90%; max-width: 800px; padding: 1rem;
   }
   .section-contacto .contact-wrapper h2 {
     font-size: clamp(1.5rem, 6vw, 2.5rem);
   }
-
-  .section-mapa .mapa-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .section-contacto .contact-form label {
+    font-size: 1.2rem;
   }
-  .section-mapa iframe {
-    height: 250px;
+  .section-contacto .contact-form input,
+  .section-contacto .contact-form textarea {
+    font-size: 0.9rem;
   }
-}
 
-/* ===================================
-   AJUSTES DE TAMAÑO DE TEXTO FINALES
-=================================== */
-/* Misión y Visión: párrafos más grandes */
-.section-mision .section-content p,
-.section-vision .section-content p {
-  font-size: clamp(1.35rem, 3vw, 1.8rem);
-}
+  .section-valores .cards-grid .card h3 {
+    font-size: clamp(1.1rem, 5vw, 1.3rem);
+  }
+  .section-valores .cards-grid .card p {
+    font-size: clamp(0.95rem, 4vw, 1.3rem);
+  }
 
-/* Valores: texto de tarjetas más grande */
-.section-valores .cards-grid .card p {
-  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-  line-height: 1.6;
+  .section-testimonios .testimonial-card p {
+    font-size: clamp(1rem, 3.5vw, 1.3rem);
+  }
+  .section-testimonios .testimonial-card h4 {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+  }
 }
