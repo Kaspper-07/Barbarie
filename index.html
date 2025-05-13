@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Servicios Publicitarios Barbari</title>
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?
+    family=Poppins:wght@400;500;600&
+    family=Playfair+Display:wght@400;700&
+    family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
     rel="stylesheet"
   />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet"/>
 
-
-  <!-- Estilos -->
-  <link rel="stylesheet" href="styles.css"/>
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="container nav-container">
-      <a href="#" class="logo">
-        <img src="./img/barbarie-logo.png" alt="Logo Barbari"/>
-      </a>
+    <div class="container">
+      <div class="logo">
+        <a href="#"><img src="img/barbarie-logo.png" alt="Barbari Logo" /></a>
+      </div>
       <ul class="nav-links">
-        <li><a href="#">Inicio</a></li>
+        <li><a href="#inicio">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#mision">Misión</a></li>
+        <li><a href="#vision">Visión</a></li>
+        <li><a href="#valores">Valores</a></li>
       </ul>
-      <a href="#contacto" class="btn btn-primary">Contáctanos</a>
     </div>
   </nav>
 
   <!-- HERO -->
-  <header class="hero">
+  <section id="inicio" class="hero">
     <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>BARBARI SERVICIOS PUBLICITARIOS</h1>
+    <div class="hero-content container">
+      <h1>Servicios Publicitarios Barbari</h1>
     </div>
-  </header>
+  </section>
 
-  <!-- QUIÉNES SOMOS (full-width) -->
-  <section class="section-nosotros">
-    <div class="section-header">
+  <!-- QUIÉNES SOMOS -->
+  <section id="nosotros" class="section-nosotros">
+    <div class="overlay"></div>
+    <div class="section-header container">
       <h2>¿Quiénes somos?</h2>
     </div>
-    <div class="section-content">
+    <div class="section-content container">
       <p>
         Somos una empresa dedicada a brindar soluciones integrales de publicidad,
         comunicación y mercadotecnia. Nuestro objetivo es potenciar la presencia
@@ -57,88 +58,211 @@
     </div>
   </section>
 
-  <!-- NUESTROS SERVICIOS (full-width) -->
-  <section id="servicios" class="section-servicios">
-    <div class="section-header">
-      <h2>Nuestros servicios</h2>
-    </div>
-    <div class="section-content grid">
-      <article class="service-card">
-        <div class="card-icon">🎨</div>
-        <h3>Branding</h3>
-        <p>Proceso de hacer y construir una marca: diferenciación, storytelling y transmisión de emociones.</p>
-      </article>
-      <article class="service-card">
-        <div class="card-icon">📰</div>
-        <h3>Publicidad</h3>
-        <p>Estrategias comerciales en prensa, radio, TV, marquesinas e internet para posicionar tu marca.</p>
-      </article>
-      <article class="service-card">
-        <div class="card-icon">💻</div>
-        <h3>Web Digital</h3>
-        <p>Diseño gráfico, arquitectura web y desarrollo para convertir tu sitio en una herramienta vendedora.</p>
-      </article>
-      <article class="service-card">
-        <div class="card-icon">🎥</div>
-        <h3>Audiovisuales</h3>
-        <p>Campañas y contenido multimedia (video, motion graphics) para impactar a tu público.</p>
-      </article>
-      <article class="service-card">
-        <div class="card-icon">📊</div>
-        <h3>Consultoría</h3>
-        <p>Asesoría en mercadotecnia y comunicación creativa para solucionar necesidades específicas.</p>
-      </article>
-    </div>
-  </section>
-
- <!-- CONTACTO (full-width con fondo) -->
-<section id="contacto" class="section-contacto">
+  <!-- MISIÓN -->
+  <section id="mision" class="section-mision">
     <div class="overlay"></div>
-    <div class="contact-wrapper">
-      <h2>¡Déjanos tus datos!</h2>
-      <form class="contact-form"
-      action="https://formspree.io/f/mvgkdpjk"
-      method="post">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required />
-  
-        <label for="correo">Correo:</label>
-        <input type="email" id="correo" name="correo" required />
-  
-        <label for="asunto">Asunto:</label>
-        <input type="text" id="asunto" name="asunto" required />
-  
-        <button type="submit" class="btn btn-secondary">Enviar</button>
-    </form>
+    <div class="container">
+      <div class="section-header">
+        <h2>Misión</h2>
+      </div>
+      <div class="section-content">
+        <p>
+          Crear estrategias publicitarias innovadoras que conecten marcas con personas,
+          generando experiencias memorables que impulsen el crecimiento de nuestros
+          clientes y fortalezcan su presencia en el mercado.
+        </p>
+      </div>
     </div>
   </section>
 
-    <!-- Dirección y mapa -->
-    <section class="section-mapa">
-        <div class="overlay"></div>
-      
-        <div class="container mapa-grid">
-          <h2>Dirección</h2>
-      
-          <div class="direccion-text">
+  <!-- VISIÓN -->
+  <section id="vision" class="section-vision">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="section-header">
+        <h2>Visión</h2>
+      </div>
+      <div class="section-content">
+        <p>
+          Ser la agencia de publicidad líder en creatividad, impacto y resultados en
+          Latinoamérica, reconocida por transformar ideas en campañas que inspiran,
+          emocionan y venden.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORES -->
+  <section id="valores" class="section-valores">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="section-header">
+        <h2>Valores</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Creatividad</h3>
+          <p>Buscamos ideas frescas, originales y disruptivas en cada proyecto.</p>
+        </div>
+        <div class="card">
+          <h3>Compromiso</h3>
+          <p>Nos involucramos profundamente con los objetivos de nuestros clientes como si fueran propios.</p>
+        </div>
+        <div class="card">
+          <h3>Innovación</h3>
+          <p>Utilizamos herramientas y tecnologías de vanguardia para mantenernos un paso adelante.</p>
+        </div>
+        <div class="card">
+          <h3>Pasión</h3>
+          <p>Amamos lo que hacemos y eso se refleja en cada campaña que creamos.</p>
+        </div>
+        <div class="card">
+          <h3>Colaboración</h3>
+          <p>Creemos en el trabajo en equipo y en la sinergia entre cliente y agencia.</p>
+        </div>
+        <div class="card">
+          <h3>Ética</h3>
+          <p>Actuamos con honestidad, transparencia y respeto en cada paso del proceso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUESTROS SERVICIOS -->
+  <section id="servicios" class="section-servicios">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="section-header">
+        <h2>Nuestros Servicios</h2>
+      </div>
+      <div class="section-content">
+        <div class="service-card">
+          <div class="card-icon">🎨</div>
+          <h3>Branding</h3>
+          <p>Proceso de hacer y construir una marca: diferenciación, storytelling y transmisión de emociones.</p>
+        </div>
+        <div class="service-card">
+          <div class="card-icon">📢</div>
+          <h3>Publicidad</h3>
+          <p>Estrategias comerciales en prensa, radio, TV, marquesinas e internet para posicionar tu marca.</p>
+        </div>
+        <div class="service-card">
+          <div class="card-icon">💻</div>
+          <h3>Web Digital</h3>
+          <p>Diseño gráfico, arquitectura web y desarrollo para convertir tu sitio en una herramienta vendedora.</p>
+        </div>
+        <div class="service-card">
+          <div class="card-icon">🎥</div>
+          <h3>Audiovisuales</h3>
+          <p>Campañas y contenido multimedia (video, motion graphics) para impactar a tu público.</p>
+        </div>
+        <div class="service-card">
+          <div class="card-icon">📊</div>
+          <h3>Consultoría</h3>
+          <p>Asesoría en mercadotecnia y comunicación creativa para solucionar necesidades específicas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS ESTÁTICOS CON FONDO -->
+<section id="testimonios" class="section-testimonios">
+  <div class="overlay"></div>
+  <div class="container cards-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>
+        “Barbari transformó nuestra imagen de marca. Profesionales, creativos 
+        y atentos a cada detalle.”
+      </p>
+      <h4>— Ana Torres</h4>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>
+        “Una experiencia excepcional. Su equipo superó nuestras expectativas 
+        en cada entrega.”
+      </p>
+      <h4>— Carlos Méndez</h4>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>
+        “La creatividad y el compromiso de Barbari hicieron la diferencia en 
+        nuestra campaña.”
+      </p>
+      <h4>— Laura Paredes</h4>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>
+        “Excelente asesoría y resultados. Recomendados para cualquier negocio 
+        que busque destacar.”
+      </p>
+      <h4>— Miguel Ángel</h4>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>
+        “Profesionales y eficientes. Nuestra visibilidad aumentó un 50% gracias 
+        a sus estrategias.”
+      </p>
+      <h4>— Sofía Ramírez</h4>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>
+        “Atención personalizada y soluciones innovadoras. Estamos encantados 
+        con los resultados.”
+      </p>
+      <h4>— José Martínez</h4>
+    </div>
+  </div>
+</section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="section-contacto">
+    <div class="overlay"></div>
+    <div class="container contact-wrapper">
+      <h2>Contacto</h2>
+      <form class="contact-form">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+
+        <label for="email">Correo</label>
+        <input type="email" id="email" name="email" placeholder="Tu correo" required />
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" placeholder="¿En qué podemos ayudarte?" required></textarea>
+
+        <button type="submit" class="btn btn-secondary">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- MAPA -->
+  <section id="mapa" class="section-mapa">
+    <div class="overlay"></div>
+    <div class="container mapa-grid">
+      <h2>Ubicación</h2>
+      <div class="direccion-text">
             <p>
                 Periférico Blvrd Manuel Ávila Camacho 138,<br/>
                 Lomas de Chapultepec III Secc,<br/>
                 Miguel Hidalgo, 11000 Ciudad de México, CDMX
             </p>
           </div>
-      
-          <div class="direccion-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.5189964613446!2d-99.21507891402265!3d19.433177993869677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d2021f0e25b3d9%3A0x14af0b4357adc5e9!2sPerif.%20Blvd.%20Manuel%20%C3%81vila%20Camacho%20138%2C%20Lomas%20de%20Chapultepec%20III%20Secc%2C%20Miguel%20Hidalgo%2C%2011000%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1746913556518!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-        </div>
-      </section>
-      
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.5189964613446!2d-99.21507891402265!3d19.433177993869677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d2021f0e25b3d9%3A0x14af0b4357adc5e9!2sPerif.%20Blvd.%20Manuel%20%C3%81vila%20Camacho%20138%2C%20Lomas%20de%20Chapultepec%20III%20Secc%2C%20Miguel%20Hidalgo%2C%2011000%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1746913556518!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 Servicios Publicitarios Barbari. Todos los derechos reservados.</p>
-  </footer>
-
+  <!-- Footer -->
+<footer>
+  <p>&copy; 2024 Servicios Publicitarios Barbari. Todos los derechos reservados.</p>
+  <div class="social-icons">
+      <img src="img/x-logo.svg" alt="X logo">
+      <img src="img/linkedin-logo.svg" alt="LinkedIn logo">
+  </div>
+</footer>
 </body>
 </html>

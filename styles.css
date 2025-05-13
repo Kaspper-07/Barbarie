@@ -1,4 +1,6 @@
-/* ===== Reset & Variables ===== */
+/* ===========================
+   RESET & VARIABLES
+=========================== */
 :root {
   --clr-primary: #F7931E;
   --clr-secondary: #0E5E6F;
@@ -6,14 +8,23 @@
   --clr-text: #333;
   --radius: 0.5rem;
   --spacing: 1rem;
+
+  /* Tipografía (tamaños ajustables) */
+  --fs-section-title: clamp(2.5rem, 6vw, 4rem);
+  --fs-section-text: clamp(1rem, 2.2vw, 1.5rem);
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ===========================
+   GLOBAL
+=========================== */
 body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
@@ -21,36 +32,22 @@ body {
   background: var(--clr-bg);
 }
 
-/* ===== Container ===== */
 .container {
   max-width: 1000px;
   margin: auto;
   padding: var(--spacing);
 }
 
-/* ===== Navbar ===== */
+/* ===========================
+   NAVBAR
+=========================== */
 .navbar {
   position: relative;
   z-index: 1000;
   background: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 1rem 1rem;
+  padding: 3rem;
 }
-
-.navbar .nav-container {
-  position: relative;
-  height: 90px;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 1rem 0.5rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Logo a la izquierda */
 .logo {
   position: absolute;
   top: 50%;
@@ -60,35 +57,29 @@ body {
 .logo img {
   height: 360px;
 }
-
-/* Enlaces centrados */
 .nav-links {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   gap: 2rem;
   list-style: none;
 }
 .nav-links a {
-  position: relative;
   font-size: 2rem;
   color: var(--clr-text);
   text-decoration: none;
   font-weight: 500;
-  padding: 0.2rem 0;
-  transition: color 0.3s ease;
+  position: relative;
+  transition: color 0.3s;
 }
 .nav-links a::after {
   content: "";
   position: absolute;
-  bottom: -3px;
-  left: 50%;
-  width: 0;
-  height: 2px;
+  bottom: -3px; left: 50%;
+  width: 0; height: 2px;
   background: var(--clr-primary);
-  transition: width 0.3s ease, left 0.3s ease;
+  transition: width 0.3s, left 0.3s;
 }
 .nav-links a:hover {
   color: var(--clr-primary);
@@ -98,74 +89,38 @@ body {
   width: 100%;
 }
 
-/* Botón a la derecha */
-.btn-primary {
-  position: absolute;
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-}
-
-/* ===== Botones ===== */
-.btn {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--radius);
-  text-decoration: none;
-  font-weight: 600;
-  transition: filter 0.2s ease;
-}
-.btn-primary {
-  background: var(--clr-primary);
-  color: #fff;
-}
-.btn-primary:hover {
-  filter: brightness(0.9);
-}
-.btn-secondary {
-  background: var(--clr-secondary);
-  color: #fff;
-}
-.btn-secondary:hover {
-  filter: brightness(0.9);
-}
-
-/* ===== Hero + Animaciones ===== */
+/* ===========================
+   HERO + ANIMATIONS
+=========================== */
 .hero {
-  color: #e6f0ff;
   position: relative;
-  height: 30vh; /* ajustable */
+  height: 30vh;
   background: url('./img/fondo-publicidad1.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  animation:
-    fadeIn 2s ease-out forwards,
-    kenburns 30s ease-in-out infinite;
+  animation: fadeIn 2s ease-out forwards,
+             kenburns 30s ease-in-out infinite;
 }
 .hero .overlay {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.4);
 }
-.hero-content {
+.hero-content h1 {
   position: relative;
   z-index: 1;
-}
-.hero-content h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
+  color: #e6f0ff;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow:
     1px 1px 2px rgba(0,0,0,0.6),
     2px 2px 6px rgba(0,0,0,0.4);
-  margin: 0;
-  transition: letter-spacing .3s;
+  transition: letter-spacing 0.3s;
 }
 .hero-content h1:hover {
   letter-spacing: 4px;
@@ -176,33 +131,25 @@ body {
   to   { opacity: 1; }
 }
 @keyframes kenburns {
-  0% {
-    background-size: 110%;
-    background-position: center 20%;
-  }
-  50% {
-    background-size: 120%;
-    background-position: center 80%;
-  }
-  100% {
-    background-size: 110%;
-    background-position: center 20%;
-  }
+  0%   { background-size: 110%; background-position: center 20%; }
+  50%  { background-size: 120%; background-position: center 80%; }
+  100% { background-size: 110%; background-position: center 20%; }
 }
 
-/* ===== Sección Quiénes somos (nuevo layout) ===== */
+/* ===================================
+   SECCIÓN “QUIÉNES SOMOS”
+=================================== */
 .section-nosotros {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* izquierda imagen, derecha contenido */
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  margin-top: 1.2rem;
   padding: 8rem 1rem;
+  margin-top: 1.2rem;
   background: url('./img/fondo-nosotros.jpg') center/cover no-repeat;
   overflow: hidden;
-  animation:
-    fadeIn 2s ease-out forwards,
-    kenburns 30s ease-in-out infinite;
+  animation: fadeIn 2s ease-out forwards,
+             kenburns 30s ease-in-out infinite;
 }
 .section-nosotros::before {
   content: "";
@@ -210,75 +157,182 @@ body {
   inset: 0;
   background: rgba(0,0,0,0.3);
 }
-
-.section-nosotros .section-header {
-  grid-column: 2;
+.section-nosotros .section-header,
+.section-nosotros .section-content {
   position: relative;
   z-index: 1;
-  text-align: center;
-  margin: 0 0 2rem 0;
 }
-
+.section-nosotros .section-header {
+  grid-column: 2;
+  text-align: center;
+  margin-bottom: 2rem;
+}
 .section-nosotros .section-header h2 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: 5rem;
   color: var(--clr-primary);
-  margin: 0;
 }
 .section-nosotros .section-content {
   grid-column: 2;
-  position: relative;
-  z-index: 1;
   max-width: 600px;
-  margin: 0 auto;      /* centra horizontalmente dentro de la columna */
+  margin: 0 auto;
   font-family: 'Lora', serif;
-  font-size: clamp(2rem, 2.5vw, 1.5rem);
+  font-size: 2rem;
   line-height: 1.8;
   color: #fff;
   text-align: center;
 }
 
-/* ===== Actualiza “Nuestros servicios” con fondo y hover naranja ===== */
+/* ===================================
+   SECCIONES MISIÓN, VISIÓN, VALORES
+=================================== */
+section[id="mision"],
+section[id="vision"],
+section[id="valores"] {
+  position: relative;
+  padding: 6rem 1rem;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  margin-top: 1.2rem;
+  animation: fadeIn 2s ease-out forwards,
+             kenburns 30s ease-in-out infinite;
+}
+.section-mision { background-image: url('./img/fondo-mision.jpg'); }
+.section-vision { background-image: url('./img/fondo-vision.jpg'); }
+.section-valores { background-image: url('./img/fondo-valores.jpg'); }
+
+section[id="mision"]::before,
+section[id="vision"]::before,
+section[id="valores"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+}
+
+/* Encabezados sobre overlay */
+.section-mision .section-header,
+.section-vision .section-header,
+.section-valores .section-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.section-mision .section-header h2,
+.section-vision .section-header h2,
+.section-valores .section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--fs-section-title);
+  color: var(--clr-primary);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  opacity: 1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Contenido Misión/Visión */
+.section-mision .section-content,
+.section-vision .section-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Lora', serif;
+  font-size: var(--fs-section-text);
+  line-height: 1.8;
+  color: #fff;
+  text-align: center;
+}
+
+/* Contenido Valores: grid de tarjetas */
+.section-valores .cards-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-valores .cards-grid .card {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  color: #fff;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+.section-valores .cards-grid .card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  color: var(--clr-primary);
+  margin-bottom: 0.75rem;
+}
+.section-valores .cards-grid .card p {
+  font-family: 'Lora', serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 0;
+}
+.section-valores .cards-grid .card:hover {
+  background: rgba(255,255,255,0.35);
+  border-color: rgba(255,255,255,0.6);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+.section-valores .cards-grid .card:hover h3,
+.section-valores .cards-grid .card:hover p {
+  color: #fff;
+}
+
+/* ===================================
+   SECCIÓN “NUESTROS SERVICIOS”
+=================================== */
 .section-servicios {
   position: relative;
   padding: 4rem 1rem;
   background: url('./img/fondo-servicios.jpg') center/cover no-repeat;
   overflow: hidden;
+  margin-top: 1.2rem;
+  animation: fadeIn 2s ease-out forwards, kenburns 30s ease-in-out infinite;
 }
 .section-servicios::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0.85); /* capa para contraste */
+  background: rgba(0,0,0,0.3);
 }
 .section-servicios .section-header {
   position: relative;
   z-index: 1;
-  grid-column: 1 / -1;
   text-align: center;
   margin-bottom: 2rem;
 }
 .section-servicios .section-header h2 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: 2rem;
   color: var(--clr-primary);
   text-transform: uppercase;
   letter-spacing: 3px;
-  margin: 0;
 }
 .section-servicios .section-content {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 0 1rem;
-  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-
-/* Tarjetas con hover naranja */
 .service-card {
   background: #fff;
   border-radius: var(--radius);
@@ -289,45 +343,115 @@ body {
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
+.service-card .card-icon {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+.service-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: var(--clr-primary);
+  margin-bottom: 0.75rem;
+}
+.service-card p {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 20px rgba(0,0,0,0.15);
   background: var(--clr-primary);
   color: #fff;
 }
-.service-card:hover .card-icon,
-.service-card:hover h3 {
+.service-card:hover .card-icon {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
+.service-card:hover h3,
+.service-card:hover p {
   color: #fff;
 }
-.service-card:hover p {
-  color: rgba(255,255,255,0.9);
+
+/* ===== Sección Testimonios con fondo ===== */
+.section-testimonios {
+  position: relative;
+  padding: 4rem 1rem;
+  background: url('./img/fondo-testimonios.png') center/cover no-repeat;
+  overflow: hidden;
+  margin-top: 1.2rem;
+  animation: fadeIn 2s ease-out forwards, kenburns 30s ease-in-out infinite;
+}
+.section-testimonios .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 1;
 }
 
-/* ===== Contacto y Dirección ===== */
-.card {
-  background: #fff;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  padding: var(--spacing);
-  margin-bottom: var(--spacing);
+.section-testimonios .cards-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.card h2 {
+
+/* Tarjetas */
+.testimonial-card {
+  background: rgba(255,255,255,0.85);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Lora', serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover opcional */
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* Estrellas */
+.testimonial-card .stars {
   color: var(--clr-primary);
+  font-size: 1.5rem;
   margin-bottom: 0.75rem;
 }
 
-/* ===== Sección CONTACTO full-width con fondo ===== */
+/* Texto y autor */
+.section-testimonios .testimonial-card p {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  line-height: 1.8;
+  color: var(--clr-text);
+  margin-bottom: 1rem;
+}
+.section-testimonios .testimonial-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: var(--clr-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===================================
+   SECCIÓN CONTACTO
+=================================== */
 .section-contacto {
   position: relative;
-  padding: 6rem 1rem; 
+  padding: 6rem 1rem;
   background: url('./img/fondo-contacto.jpg') center/cover no-repeat;
   overflow: hidden;
+  margin-top: 1.2rem;
+  animation: fadeIn 2s ease-out forwards, kenburns 30s ease-in-out infinite;
 }
 .section-contacto .overlay {
-  content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.4); /* oscurece el fondo para que el formulario resalte */
+  background: rgba(0,0,0,0.4);
 }
 .section-contacto .contact-wrapper {
   position: relative;
@@ -335,168 +459,163 @@ body {
   max-width: 600px;
   margin: 0 auto;
   background: rgba(255,255,255,0.9);
-  border-radius: var(--radius);
+  border-radius: var(--radius);  
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  text-align: left;
 }
-
-/* Ajustes tipográficos */
 .section-contacto .contact-wrapper h2 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: 3.5rem;
   color: var(--clr-primary);
   text-align: center;
   margin-bottom: 1.5rem;
 }
+.section-contacto .contact-form {
+  display: grid;
+  gap: 1rem;
+}
 .section-contacto .contact-form label {
   font-weight: 500;
+  font-size: 1.75rem;
 }
-.section-contacto .contact-form input {
+.section-contacto .contact-form input,
+.section-contacto .contact-form textarea {
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: var(--radius);
-  font-size: 1rem;
-  
+  resize: vertical;
+}
+.section-contacto .contact-form textarea {
+  min-height: 180px;
+  line-height: 1.5;
 }
 .section-contacto .contact-form button {
-  margin-top: var(--spacing);
   width: 100%;
-  
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.section-contacto .contact-form button:hover {
+  filter: brightness(0.95);
 }
 
-.section-contacto .contact-form button.btn-secondary {
-  background: var(--clr-primary);    /* naranja */
-  border-color: var(--clr-primary);
-  color: #fff;
-}
-.section-contacto .contact-form button.btn-secondary:hover {
-  filter: brightness(0.9);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .section-contacto {
-    padding: 4rem 1rem;
-  }
-  .section-contacto .contact-wrapper {
-    padding: 1.5rem;
-  }
-}
-
-/* ===== Sección MAPA full-width con título y grid ===== */
+/* ===================================
+   SECCIÓN MAPA
+=================================== */
 .section-mapa {
   position: relative;
   padding: 2rem 1rem;
   background: url('./img/fondo-mapa.png') center/cover no-repeat;
   overflow: hidden;
   margin-top: 1.2rem;
+  animation: fadeIn 2s ease-out forwards, kenburns 30s ease-in-out infinite;
 }
 .section-mapa .overlay {
-  content: "";
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.3);
 }
-
-/* Encabezado al centro encima de todo */
-.section-mapa .mapa-grid > h2 {
+.section-mapa .mapa-grid {
   position: relative;
   z-index: 1;
-  grid-column: 1 / -1;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  color: var(--clr-primary);
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-/* ——— Ajustes de la sección MAPA ——— */
-.section-mapa .mapa-grid {
-  /* Mantén el layout de dos columnas */
   display: grid;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing);
   max-width: 1000px;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
 }
-
-/* Título más grande y centrado sobre ambas columnas */
 .section-mapa .mapa-grid > h2 {
   grid-column: 1 / -1;
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: var(--fs-section-title);
   color: var(--clr-primary);
   text-align: center;
-  margin: 0 0 1.5rem 0;
+  margin-bottom: var(--spacing);
 }
-
-/* Texto de dirección amplio en la columna izquierda */
 .section-mapa .direccion-text {
-  grid-column: 1 / 2;      /* fuerza la primera columna */
-  
-  /* Tipografía más grande y fluida */
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  line-height: 1.6;
-  color: #fff;              /* o var(--clr-secondary) si prefieres azul */
-
-  /* Asegura que se muestre completo */
-  background: none;
-  box-shadow: none;
-  padding: 0;
-  margin: 0;
-
-  /* Y un poco de espacio interno si lo quieres */
-  /* padding-right: var(--spacing); */
+  font-size: var(--fs-section-text);
+  color: #fff;
   text-align: left;
 }
-
-
-/* Responsive: pasa a una columna en móvil */
-@media (max-width: 768px) {
-  .section-mapa .mapa-grid {
-    grid-template-columns: 1fr;
-  }
+.section-mapa iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
 }
 
-
-/* ===== Footer ===== */
+/* ========= FOOTER ========= */
 footer {
   text-align: center;
   padding: var(--spacing);
   background: #222;
   color: #eee;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
-/* ===== Responsive para móviles (≤768px) ===== */
-@media (max-width: 768px) {
-  /* Navbar: stack y centrar */
+/* ===== Footer – iconos sociales ===== */
+footer {
+  text-align: center;
+  padding: var(--spacing);
+  background: #222;
+  color: #eee;
+}
 
+footer .social-icons {
+  margin-top: var(--spacing);
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+footer .social-icons a {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+footer .social-icons a:hover {
+  transform: translateY(-4px);
+}
+
+footer .social-icons img {
+  width: 32px;
+  height: 32px;
+  /* Si tus SVGs son oscuros y quieres que se vean en blanco: */
+  filter: invert(1) brightness(2);
+}
+
+/* ===== Unificar estilo de todos los h2 de sección ===== */
+.section-nosotros .section-header h2,
+.section-mision .section-header h2,
+.section-vision .section-header h2,
+.section-valores .section-header h2,
+.section-contacto .contact-wrapper h2,
+.section-mapa .mapa-grid > h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--fs-section-title);
+  color: var(--clr-primary);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  opacity: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* ===========================
+   RESPONSIVE (≤768px)
+=========================== */
+@media (max-width: 768px) {
   .nav-links,
   .btn-primary {
-    display: none !important;
+    display: none;
   }
-
-  .navbar .nav-container {
-  /* Eleva el logo alejándolo del hero */
-  padding-bottom: 2rem;  /* antes era ~1rem, ajústalo a tu gusto */
-}
-
-  /* Centramos el logo horizontalmente */
-  .logo {
-    margin: 1rem auto !important;
-    position: relative !important;
-    transform: none !important;
-  }
-  
-  /* Hero: menos alto y texto más pequeño */
   .hero {
     height: 30vh;
   }
@@ -504,7 +623,6 @@ footer {
     font-size: clamp(1.5rem, 6vw, 2.5rem);
   }
 
-  /* “Quiénes somos”: menos padding y texto ajustado */
   .section-nosotros {
     padding: 4rem 1rem;
   }
@@ -512,65 +630,47 @@ footer {
     font-size: clamp(2rem, 8vw, 3rem);
   }
   .section-nosotros .section-content {
-    font-size: clamp(0.9rem, 4vw, 1.2rem);
-    padding: 0 1rem;
+    font-size: clamp(1rem, 4vw, 1.2rem);
   }
 
-  /* Servicios: columna única y tarjetas expandidas */
   .section-servicios .section-content {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  .service-card {
-    max-width: 100%;
-    justify-self: auto;
-  }
 
-  /* Contacto: contenedor más estrecho */
   .section-contacto {
     padding: 4rem 1rem;
   }
   .section-contacto .contact-wrapper {
+    width: 90%;
     max-width: 800px;
-    width: 80%;
     padding: 1rem;
   }
   .section-contacto .contact-wrapper h2 {
     font-size: clamp(1.5rem, 6vw, 2.5rem);
   }
 
- /* Contenedor único en columna y centrado */
   .section-mapa .mapa-grid {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing);
-    padding: 1rem 0;
   }
+  .section-mapa iframe {
+    height: 250px;
+  }
+}
 
-  /* Título centrado */
-  .section-mapa .mapa-grid > h2 {
-    text-align: center;
-    margin-bottom: var(--spacing);
-  }
+/* ===================================
+   AJUSTES DE TAMAÑO DE TEXTO FINALES
+=================================== */
+/* Misión y Visión: párrafos más grandes */
+.section-mision .section-content p,
+.section-vision .section-content p {
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+}
 
-  /* Texto centrado y con ancho cómodo */
-  .section-mapa .direccion-text {
-    width: 90%;
-    max-width: none;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  /* Mapa debajo, centrado y con altura reducida */
-  .section-mapa .direccion-map {
-    width: 90%;
-    max-width: none;
-    margin: 0 auto;
-  }
-  .section-mapa .direccion-map iframe {
-    width: 100%;
-    height: 250px;  /* ajusta según te convenga */
-  }
-
+/* Valores: texto de tarjetas más grande */
+.section-valores .cards-grid .card p {
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  line-height: 1.6;
 }
