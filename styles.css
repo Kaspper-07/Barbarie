@@ -352,6 +352,10 @@ section[id="valores"]::before {
 .section-contacto .contact-form label {
   font-weight: 500; font-size: 1.75rem;
 }
+
+#alternativa-contacto{
+  text-align: center;
+}
 .section-contacto .contact-form input,
 .section-contacto .contact-form textarea {
   width: 100%; padding: .75rem 1rem;
